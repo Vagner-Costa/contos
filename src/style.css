@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    *{
+        @apply box-border outline-none overflow-x-hidden
+    }
+    .centralizado{
+        @apply justify-center items-center
+    }
+    .linha{
+        @apply flex-row
+    }
+    .coluna{
+        @apply flex-col
+    }
+}
+@layer components{
+    .buttons_form{
+        @apply text-cinza_c text-18 p-10 rounded-5 border bg-cinza_e
+        border-cinza_e hover:border-cinza_c
+    }
+    .inputs_form{
+        @apply p-10 border border-cinza_c bg-[rgba(0,0,0,0)] rounded-5 text-18 text-cinza_c 
+        placeholder:text-16 placeholder:text-cinza_m
+    }
+}
