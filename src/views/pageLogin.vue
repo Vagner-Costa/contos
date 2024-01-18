@@ -36,7 +36,7 @@
                     <button class="buttons_form"
                         translate="no"
                     >
-                        Login
+                        Log aqui
                     </button>
                 </div>
             </div>
