@@ -1,7 +1,7 @@
 import { createRouter,createWebHistory } from "vue-router";
 import Home from '../views/index.vue'
 import PageLogin from '../views/pageLogin.vue'
-import PageCreateUser from '../views/pageCreateUser.vue'
+import createUser from '../views/createUser.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -17,9 +17,9 @@ const router = createRouter({
             component:PageLogin
         },
         {
-            path: "/pageCreateUser",
-            name:"pageCreateUser",
-            component:PageCreateUser
+            path: "/createUser",
+            name:"createUser",
+            component:createUser
         },
     ]
 })

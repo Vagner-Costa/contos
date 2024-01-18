@@ -5,21 +5,32 @@
         desk:bg-[url('assets/bg_images/livro.jpg')]
         "
     >
-        <div class="w-full h-full bg-preto/50 absolute left-0 top-0"></div>
+         <div class="w-full h-full bg-preto/50 absolute left-0 top-0"></div>
         <div class="max-w-[400px] w-full h-screen max-h-[550px] rounded-10 bg-preto/80
             p-10 relative flex coluna justify-between
             tab:p-20"
         >
-            <div class="w-full flex centralizado mb-20">
+            <div class="w-full flex coluna centralizado mb-10">
                 <h1 class="text-cinza_c"
                     translate="no"
                 >
                     Criar Usuário.
                 </h1>
+
+                <div class="w-full h-[45px] overflow-hidden flex centralizado">
+                    <p v-if="store.gettersCreateUser.msg"
+                        class="w-full text-center text-16 leading-[20px] overflow-hidden"
+                        :class="store.gettersCreateUser.status === 1 ? 
+                            ['text-verde']
+                                :
+                            ['text-vermelho']"
+                    >
+                        {{ store.gettersCreateUser.msg }}
+                    </p>
+                </div>
             </div>
 
             <div class="w-full flex coluna">
-                <!-- Email -->
                 <div class="w-full flex coluna mb-20">
                     <label class="text-cinza_c text-18 mb-5 ml-5">Email:</label>
                     <input class="p-10 border border-cinza_c bg-[rgba(0,0,0,0)] rounded-5 text-18 text-cinza_c 
@@ -32,7 +43,6 @@
                     >
                 </div>
 
-                <!-- Senha -->
                 <div class="w-full flex coluna mb-20">
                     <label class="text-18 mb-5 ml-5"
                         :class="cptdValidateEmail ? 
@@ -56,7 +66,6 @@
                     >
                 </div>
 
-                <!-- Confirmar senha -->
                 <div class="w-full flex coluna mb-40">
                     <label class="text-18 mb-5 ml-5"
                         :class="cptdValidatePass ? 
@@ -80,9 +89,8 @@
                     >
                 </div>
 
-                <!-- Botão enviar -->
                 <div class="w-full flex coluna mb-20">
-                    <button @click="createUser"
+                    <button @click="fcreateUser"
                         class="buttons_form" 
                         translate="no"
                     >
@@ -98,15 +106,14 @@
                 >
                     Já sou cadastrado.
                 </router-link>
-            </div>
-            
+            </div> 
         </div>
     </main>
 </template>
 
 <script setup>
     import { ref, computed } from 'vue'
-    import { useCreateUser } from '../stores/createUser/createUser.js'
+    import { useCreateUser } from '../stores/createUser'
 
     const c_email = ref('')
     const c_pass = ref('')
@@ -149,7 +156,7 @@
             validate_confirmPass.value = false
     }
 
-    function createUser(){
+    async function fcreateUser(){
         if(!validate_email.value){
             r_email.value.focus()
             c_email.value = ""
@@ -172,8 +179,6 @@
         store.actionsCreateUser({
             email:c_email.value,pass:c_pass.value,confirmPass:c_confirmPass.value
         })
-
-
     }
 
     const cptdValidateEmail = computed(()=>{
@@ -183,16 +188,4 @@
     const cptdValidatePass = computed(()=>{
         return validate_pass.value 
     })
-
-    const cptdValidateConfirmPass = computed(()=>{
-        return validate_confirmPass.value 
-    })
-
-    
-
-
 </script>
-
-<style scoped>
-
-</style>

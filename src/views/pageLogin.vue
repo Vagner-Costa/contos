@@ -33,7 +33,7 @@
                         type="password" >
                 </div>
                 <div class="w-full flex coluna mb-20">
-                    <button class="buttons_form" 
+                    <button class="buttons_form"
                         translate="no"
                     >
                         Login
@@ -44,7 +44,7 @@
             <div class="w-full flex centralizado">
                 <router-link class="text-center text-cinza_e underline underline-offset-4 
                     decoration-1 text-18 hover:text-cinza_m" 
-                    to="/pageCreateUser" translate="no"
+                    to="/createUser"
                 >
                     Ainda não sou cadastrado.
                 </router-link>
@@ -57,7 +57,3 @@
 <script setup>
 
 </script>
-
-<style scoped>
-
-</style>
