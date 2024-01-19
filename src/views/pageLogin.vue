@@ -22,27 +22,34 @@
                 <div class="w-full flex coluna mb-20">
                     <label class="text-cinza_c text-18 mb-5 ml-5">Email:</label>
                     <input class="inputs_form"
+                        v-model="l_email"
                         placeholder="Digite o email..."
                         type="email"
+                        ref="r_email"
                     >
                 </div>
                 <div class="w-full flex coluna mb-40">
                     <label class="text-cinza_c text-18 mb-5 ml-5">Senha:</label>
                     <input class="inputs_form"
+                        v-model="l_pass"
                         placeholder="Digite a senha..."
-                        type="password" >
+                        type="password" 
+                        ref="r_pass"
+                    >
                 </div>
                 <div class="w-full flex coluna mb-20">
-                    <button class="buttons_form"
+                    <button @click="login"
+                        class="buttons_form"
                         translate="no"
                     >
-                        Log aqui
+                        Login
                     </button>
                 </div>
             </div>
 
             <div class="w-full flex centralizado">
-                <router-link class="text-center text-cinza_e underline underline-offset-4 
+                <router-link 
+                    class="text-center text-cinza_e underline underline-offset-4 
                     decoration-1 text-18 hover:text-cinza_m" 
                     to="/createUser"
                 >
@@ -55,5 +62,32 @@
 </template>
 
 <script setup>
+    import { useLogin } from '../stores/login.js'
+    import {ref} from 'vue'
+
+    const store = useLogin()
+
+    const l_email = ref()
+    const l_pass = ref()
+
+    const r_email = ref()
+    const r_pass = ref()
+
+    async function login(){
+        if(!l_email.value){
+            r_email.value.focus()
+            r_email.value.placeholder = 'Campo email é obrigatório.'
+            l_email.value=''
+            return
+        }
+        if(!l_pass.value){
+            r_pass.value.focus()
+            r_pass.value.placeholder = 'Campo senha é obrigatório.'
+            l_pass.value=''
+            return
+        }
+
+        store.actionsLogin({email:l_email.value, pass:l_pass.value})
+    }
 
 </script>

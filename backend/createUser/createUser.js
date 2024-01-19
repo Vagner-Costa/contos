@@ -32,7 +32,7 @@ router.post('/createUser',connection,async(req,res)=>{
 
         connection.collection('users').insertOne({
             email:email,
-            passaword:hash,
+            password:hash,
         })
         .then((response)=>{
             if(response.acknowledged){

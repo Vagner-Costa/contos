@@ -8,11 +8,11 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cors())
 
-console.log('porta',porta)
-
 const createUser = require('./createUser/createUser.js')
+const login = require('./login/login.js')
 
 app.use('/',createUser)
+app.use('/',login)
 
 app.listen(porta,()=>{console.log(`Servidor rodando na porta ${porta}`)})
 
