@@ -1,14 +1,18 @@
-require('dotenv').config()
-const express = require('express')
+
+import express from 'express'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+
+dotenv.config()
+
 const router = express.Router()
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
 const secret = process.env.SECRET
 
-const connection = require('../../src/services/conexao.js')
+import {connection} from '../../src/services/conexao.js'
 
 router.post('/login',connection,async(req,res)=>{
-    const connection = await req.connection_bd
+    const connection = await req.access
     const { email,pass } = await req.body
     let token = null
 
@@ -16,11 +20,10 @@ router.post('/login',connection,async(req,res)=>{
     connection.collection('users').find({email:email}).toArray()
     .then(async(response)=>{
         if(response.length > 0){
-
             //Descriptografando e validando senha
             bcrypt.compareSync( pass , response[0].password) ? 
                 //Senha válida , gerando token JWT
-                token = await jwt.sign({id : response[0]._id}, secret, { expiresIn: '1h' }) 
+                token = jwt.sign({id : response[0]._id}, secret, { expiresIn: '1h' }) 
                     : 
                 //senha inválida, erro ao validar senha
                 token=null
@@ -38,9 +41,6 @@ router.post('/login',connection,async(req,res)=>{
     .catch((err)=>{
         return res.status(500).end()  //Erro ao se conectar
     })
-
-
-
 })
 
-module.exports = router
+export default router

@@ -1,11 +1,13 @@
-require('dotenv').config()
-const mongodb = require('mongodb').MongoClient
+import dotenv from 'dotenv'
+dotenv.config()
+import {MongoClient} from 'mongodb'
 const url_connection = process.env.URL_CONNECTION
+const client = new MongoClient(url_connection)
 
-const connection = async(req,res,next)=>{
+export const connection = async(req,res,next)=>{
     try{
-        const res_url_connection = await mongodb.connect(url_connection)
-        req.connection_bd = await res_url_connection.db('contos_e_historias')
+        client.connect()
+        req.access = client.db('contos_e_historias')
         next()
     }catch(err){
         console.log('Ocorreu um erro de conexão com o banco de dados',err)
@@ -13,5 +15,5 @@ const connection = async(req,res,next)=>{
     }
 }
 
-module.exports = connection 
+ 
 

@@ -10,12 +10,21 @@
             p-10 relative flex coluna justify-between
             tab:p-20"
         >
-            <div class="w-full flex centralizado mb-20">
+            <div class="w-full flex centralizado coluna mb-20">
                 <h1 class="text-cinza_c"
                     translate="no"
                 >
                     Efetue o login.
                 </h1>
+
+                <div class="w-full h-[45px] overflow-hidden flex centralizado">
+                    <p v-if="store.gettersLogin.msg"
+                        class="w-full text-center text-16 leading-[20px] overflow-hidden
+                        text-vermelho"
+                    >
+                        {{ store.gettersLogin.msg }}
+                    </p>
+                </div>
             </div>
 
             <div class="w-full flex coluna">
@@ -64,6 +73,8 @@
 <script setup>
     import { useLogin } from '../stores/login.js'
     import {ref} from 'vue'
+
+    sessionStorage.removeItem('token')
 
     const store = useLogin()
 

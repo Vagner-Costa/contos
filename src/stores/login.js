@@ -4,8 +4,17 @@ import {url} from '../services/enderecos.js'
 import router from '../routes/index.js'
 
 export const useLogin = defineStore('login',{
-    state: ()=>({}),
-    getters:{},
+    state: ()=>{
+        return {
+            status :0,
+            msg : null
+        }
+    },
+    getters:{
+        gettersLogin : (state)=>{
+            return state
+        }
+    },
     actions:{
         async actionsLogin(payload){
             const email = await payload.email
@@ -21,14 +30,19 @@ export const useLogin = defineStore('login',{
             })
             .then((response)=>{
                 if(response.status === 200){
-                    sessionStorage.getItem('token',response.data.token)
+                    sessionStorage.setItem('token',response.data.token)
                     router.push('/users')
-                }else{
-
                 }
             })
-            .catch((err)=>{
-                console.log(err)
+            .catch((error)=>{
+                if(error.response.status === 404){
+                    this.status=0;
+                    this.msg = 'Usuário ou senha inválido'
+                }
+                if(error.response.status === 500){
+                    this.status=0;
+                    this.msg = "Erro ao se conectar com o banco de dados. Tente novamente mais tarde."
+                }
             })
         }
     }

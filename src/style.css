@@ -4,7 +4,7 @@
 
 @layer base{
     *{
-        @apply box-border outline-none overflow-x-hidden
+        @apply box-border outline-none overflow-hidden
     }
     .centralizado{
         @apply justify-center items-center
@@ -24,5 +24,8 @@
     .inputs_form{
         @apply p-10 border border-cinza_c bg-[rgba(0,0,0,0)] rounded-5 text-18 text-cinza_c 
         placeholder:text-16 placeholder:text-cinza_m
+    }
+    .textos{
+        @apply text-16 leading-[20px] 
     }
 }

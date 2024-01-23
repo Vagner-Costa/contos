@@ -1,13 +1,12 @@
-require('dotenv').config()
-const express = require('express')
-const router = express.Router()
-const bcrypt = require('bcrypt')
-const secret = process.env.SECRET
+import express from 'express'
+import bcrypt from 'bcrypt'
 
-const connection = require('../../src/services/conexao.js')
+const router = express.Router()
+
+import {connection} from '../../src/services/conexao.js'
 
 router.post('/createUser',connection,async(req,res)=>{
-    const connection = await req.connection_bd
+    const connection = await req.access
     const email = await req.body.email
     const pass = await req.body.pass
 
@@ -27,10 +26,12 @@ router.post('/createUser',connection,async(req,res)=>{
     })
 
     const cadastrar = async()=>{
-        const salt = await bcrypt.genSaltSync(12)
-        const hash = await bcrypt.hashSync(pass,salt)
+        const salt = bcrypt.genSaltSync(12)
+        const hash = bcrypt.hashSync(pass,salt)
 
         connection.collection('users').insertOne({
+            name:'',
+            foto:'',
             email:email,
             password:hash,
         })
@@ -49,4 +50,4 @@ router.post('/createUser',connection,async(req,res)=>{
 
 })
 
-module.exports = router
+export default router

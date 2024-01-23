@@ -35,6 +35,7 @@ export default {
       "7": "7px",
       "10": "10px",
       "15": "15px",
+      "100%" : "100%"
     },
     screens:{
       'mob':'640px',
