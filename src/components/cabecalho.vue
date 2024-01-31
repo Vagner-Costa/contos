@@ -5,7 +5,7 @@
   >
     <div class="h-60 w-[150px] flex centralizado">
       <img class="w-60 h-60 absolute" src="../assets/icones/leitura.png" alt="">
-      <p class="textos absolute text-20 text-[#ff0]">Contos e historias</p>
+      <p class="textos absolute text-20">Contos e historias</p>
     </div>
 
     <ul class="hidden lap:flex lap:linha">

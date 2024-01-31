@@ -15,7 +15,7 @@
             '/'
             
             " 
-            class="textos text-cinza_m"
+            class="textos hover:text-cinza_m"
         >
             {{ props.titulo }}
         </router-link>

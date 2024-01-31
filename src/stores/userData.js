@@ -25,14 +25,18 @@ export const useUserData = defineStore('userData',{
                 }
             })
             .then(async(response)=>{
-                console.log(response)
                 if(response.status === 200){
                     this.user = await response.data.response[0]
                 }
             })
             .catch((error)=>{
                 console.log(error)
-                router.push('/pageLogin')
+                if(error.response.status=== 498){
+                    router.push('/pageLogin')
+                }else{
+                    router.push('/pageLogin')
+                }
+                
             })
 
             if(this.user){

@@ -1,0 +1,1 @@
+export const orderPublications = ['Selecione uma categoria','Adicionar arquivos','Adicionar capa','Adicionar Título','Adicionar Autor']

@@ -1,6 +1,9 @@
 <template>
-    <div class="w-full h-full fixed left-0 top-80 bg-preto/70 lap:hidden z-50">
-        <header class="w-[200px] h-full bg-preto absolute top-0 transition-all 
+    <div @click="store.actionsModalMenu"
+        class="w-full h-full fixed left-0 top-80 bg-preto/70 lap:hidden z-50"
+    >
+        <header @click.stop=""
+            class="w-[200px] h-full bg-preto absolute top-0 transition-all 
             easy-in-out py-20 px-5"
             :class="store.gettersModalMenu.setHeader ? 'ml-0' : 'ml-[-250px]'"
         >

@@ -14,10 +14,14 @@ app.use(cors())
 import createUser from './createUser/createUser.js'
 import login from './login/login.js'
 import userData from './userData/userData.js'
+import uploadPhotoProfile from './uploadPhotoProfile/uploadPhotoProfile.js'
+import downloadPhotoProfile  from './downloadPhotoProfile/downloadPhotoProfile.js'
 
 app.use('/',createUser)
 app.use('/',login)
 app.use('/',userData)
+app.use('/',uploadPhotoProfile)
+app.use('/',downloadPhotoProfile)
 
 app.listen(porta,()=>{console.log(`Servidor rodando na porta ${porta}`)})
 

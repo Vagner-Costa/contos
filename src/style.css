@@ -26,6 +26,12 @@
         placeholder:text-16 placeholder:text-cinza_m
     }
     .textos{
-        @apply text-16 leading-[20px] 
+        @apply text-18 leading-[22px] text-cinza_c
+    }
+    .titulos{
+        @apply text-30 leading-[35px] text-cinza_c font-medium
+    }
+    .semi_titulos{
+        @apply text-24 leading-[30px] text-cinza_c 
     }
 }

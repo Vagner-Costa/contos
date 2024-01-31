@@ -19,13 +19,12 @@ export default {
       '50':'50px',
       '60':'60px',
     },
-    // #393d42
     colors:{
       preto:"#171718",
       branco:'#fff',
       cinza_e:"#484848",
       cinza_m:"#6a6e73",
-      cinza_c:"#808080",
+      cinza_c:"#e9e9e9",
       vermelho:"#c12e1a",
       verde:"#3f7b32"
 

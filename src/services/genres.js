@@ -1,0 +1,1 @@
+export const genres = ['Ficção','Drama','Suspense','Comédia','Cordel','Ação','Faroeste','Romance','Policial','Fantasia','Aventura','Infantil','Biografia','Gastronomia','Humor','Tecnologia','terror','Histórias da vida real']

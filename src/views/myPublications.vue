@@ -2,7 +2,9 @@
     <main class="w-full min-h-screen">
         <Cabecalho></Cabecalho>
         <ModalMenu v-if="store.gettersModalMenu.setModal"></ModalMenu>
-        Minhas Publicações
+        <section class="w-full min-h-screen px-10 flex linha border ">
+
+        </section>
     </main>
 </template>
 
